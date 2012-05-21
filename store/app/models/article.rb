@@ -6,4 +6,5 @@ class Article < ActiveRecord::Base
                     :presence => true, 
                     :length => {:minimum => 1, :maximum => 15},
                     :format => {:with => /[a-zA-Z\s]+$/}
+			   
 end

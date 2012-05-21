@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
     end
   end
   def your_article
-    user=User.find_by_email(current_user.email)
+    user=current_user
     unless @article.user_id == user.id || current_user.is_admin
        flash[:notice]="its not your article"
        redirect_to articles_path

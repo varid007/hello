@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   
   def create
     
-    @user = User.find_by_email(current_user.email)
+    @user = current_user
     @product = @user.products.create(params[:product])
     if @product.save
       flash[:notice] = "Article was successfully created"
@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
   end
   
   def your_product
-    user=User.find_by_email(current_user.email)
+    user=current_user
     unless @product.id == user.id || current_user.is_admin
        flash[:notice]="its not your product"
        redirect_to products_path
